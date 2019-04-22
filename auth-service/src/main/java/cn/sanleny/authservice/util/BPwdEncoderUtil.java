@@ -1,4 +1,4 @@
-package cn.sanleny.userservice.util;
+package cn.sanleny.authservice.util;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

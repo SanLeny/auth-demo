@@ -1,9 +1,10 @@
-package cn.sanleny.study.auth.sample.security;
+package cn.sanleny.authservice.config;
 
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -38,6 +39,7 @@ public class MyAuthenticationProvider extends DaoAuthenticationProvider {
 
         String presentedPassword = authentication.getCredentials().toString();
         System.out.println(">>>presentedPassword:"+presentedPassword);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
 //        String salt = ((JwtUserDetails) userDetails).getSalt();
         //if (!new PasswordEncoder(salt).matches(userDetails.getPassword(), presentedPassword)) {
         // 这里写覆写密码验证逻辑
